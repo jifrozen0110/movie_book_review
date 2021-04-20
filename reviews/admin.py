@@ -12,3 +12,5 @@ class ReviewAdmin(admin.ModelAdmin):
         "book",
     )
 
+    list_filter = ("movie", "book")
+

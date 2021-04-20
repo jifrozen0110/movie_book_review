@@ -8,13 +8,12 @@ class BookAdmin(admin.ModelAdmin):
     "title",
     "writer",
     "year",
-    "category",
-    "cover_image",
     "rating",
 
   )
 
   list_fileter=(
+    "rating",
     "rating",
     "category",
   )

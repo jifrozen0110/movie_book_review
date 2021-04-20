@@ -13,8 +13,8 @@ class UserAdmin(UserAdmin):
                 "bio",
                 "preference",
                 "language",
-                "fav_book_genre",
-                "fav_movie_genre",
+                "fav_book_cat",
+                "fav_movie_cat",
             )
         },
     ), )
@@ -26,13 +26,13 @@ class UserAdmin(UserAdmin):
         "email",
         "preference",
         "language",
-        "fav_book_genre",
-        "fav_movie_genre",
+        "fav_book_cat",
+        "fav_movie_cat",
     )
 
     list_filter = (
         "preference",
         "language",
-        "fav_book_genre",
-        "fav_movie_genre",
+        "fav_book_cat",
+        "fav_movie_cat",
     )
