@@ -3,7 +3,7 @@ from . import models
 
 
 # Register your models here.
-@admin.register(models.Fav)
+@admin.register(models.Favs)
 class FavsAdmin(admin.ModelAdmin):
     list_display = (
         "created_by",
