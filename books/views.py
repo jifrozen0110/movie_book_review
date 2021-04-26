@@ -1,5 +1,16 @@
 from django.shortcuts import render
+from django.views.generic import ListView
+from books.models import Book
 
 
-def all_books(request):
-    return render(request, "books.html")
+class BooksView(ListView):
+    model = Book
+    paginate_by = 10
+    paginate_orphans = 5
+    ordering = "created"
+    context_object_name = "books"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['page_title'] = "All Books"
+        return context

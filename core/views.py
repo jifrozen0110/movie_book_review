@@ -6,35 +6,17 @@ from people.models import Person
 
 
 def home(request):
-    page = request.GET.get("page", 1)
 
-    movies = Movie.objects.all().order_by('pk')
-    books = Book.objects.all().order_by('pk')
-    people = Person.objects.all().order_by('pk')
+    movies = Movie.objects.all().order_by('pk')[:10]
+    books = Book.objects.all().order_by('pk')[:10]
+    people = Person.objects.all().order_by('pk')[:10]
 
-    try:
-        movies_paginator = Paginator(movies, 10, orphans=5)
-        movies = movies_paginator.page(int(page))
-    except EmptyPage:
-        movies = None
-
-    try:
-        books_paginator = Paginator(books, 10, orphans=5)
-        books = books_paginator.page(int(page))
-    except EmptyPage:
-        books = None
-
-    try:
-        people_paginator = Paginator(people, 10, orphans=5)
-        people = people_paginator.page(int(page))
-    except EmptyPage:
-        people = None
 
     return render(request, "home.html", {
         "movies": movies,
         "books": books,
         "people": people,
-        "current_page": page
+        "page_title": "Home"
     })
 
 
