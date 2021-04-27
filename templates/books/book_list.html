@@ -3,9 +3,12 @@
 {% block content %}
 <div>
   <h2>Books</h2>
+  <div>
+    <h1><a href="{% url 'books:book_create'%}">Create</a></h1>
+</div>
   {% for book in books %}
   <div>
-    <h3>{{book.title}}</h3>
+    <h3><a href="{% url "books:book_detail" book.pk %}">{{book.title}}</a></h3>
     <h5>{{book.year}}</h5>
   </div>
   {% endfor %}

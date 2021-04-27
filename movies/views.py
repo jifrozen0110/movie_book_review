@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.views.generic import ListView
+from django.views.generic import ListView,DetailView,UpdateView,CreateView
 from movies.models import Movie
 
 
@@ -14,3 +14,27 @@ class MoviesList(ListView):
         context = super().get_context_data(**kwargs)
         context['page_title'] = "All Movies"
         return context
+class MovieDetailView(DetailView):
+  model=Movie
+
+class MovieUpdateView(UpdateView):
+    model = Movie
+    fields = (
+        "title",
+        "year",
+        "cover_image",
+        "rating",
+        "category",
+        "director",
+    )
+
+class MovieCreateView(CreateView):
+  model=Movie
+  fields=(
+        "title",
+        "year",
+        "cover_image",
+        "rating",
+        "category",
+        "director",
+  )

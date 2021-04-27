@@ -3,9 +3,12 @@
 {% block content %}
 <div>
   <h2>Movies</h2>
+    <div>
+    <h1><a href="{% url 'movies:movie_create'%}">Create</a></h1>
+</div>
   {% for movie in movies %}
   <div>
-    <h3>{{movie.title}}</h3>
+    <h3><a href="{% url "movies:movie_detail" movie.pk %}">{{movie.title}}</a></h3>
     <h5>{{movie.year}}</h5>
   </div>
   {% endfor %}

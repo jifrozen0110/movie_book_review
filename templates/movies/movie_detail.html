@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block page_name %}
+    Movie Detail
+ {% endblock page_name %}
+{% block content %}
+<div>
+    <h1>{{movie.title}}</h1>
+    <h5>{{movie.year}}</h5>
+    <h3>{{movie.director.name}}</h3>
+{% for a in movie.cast.all  %}
+         <li>{{a}}</li>
+     {% endfor %}
+    <h3>{{movie.category.name}}</h3>
+    <h5>{{movie.rating}}</h5>
+</div>
+<div>
+    <h4><a href="{% url 'movies:movie_update' movie.pk %}">Edit Movie</a></h4>
+</div>
+{% endblock content %}

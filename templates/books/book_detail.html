@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block page_name %}
+    Book Detail
+ {% endblock page_name %}
+{% block content %}
+<div>
+    <h1>{{book.title}}</h1>
+    <h5>{{book.year}}</h5>
+    <h3>{{book.writer.name}}</h3>
+    <h3>{{book.category.name}}</h3>
+    <h5>{{book.rating}}</h5>
+</div>
+<div>
+    <h4><a href="{% url 'books:book_update' book.pk %}">Edit Book</a></h4>
+</div>
+{% endblock content %}

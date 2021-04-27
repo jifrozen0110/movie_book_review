@@ -1,4 +1,4 @@
-from django.views.generic import ListView
+from django.views.generic import ListView, DetailView, UpdateView, CreateView
 from people.models import Person
 
 
@@ -14,3 +14,28 @@ class PeopleView(ListView):
         context = super().get_context_data(**kwargs)
         context['page_title'] = "All People"
         return context
+
+
+class PeopleDetailView(DetailView):
+    model = Person
+    template_name = "people/people_detail.html"
+
+
+class PeopleUpdateView(UpdateView):
+    model = Person
+    fields = (
+        "name",
+        "photo",
+        "kind",
+    )
+    template_name = "people/people_form.html"
+
+
+class PeopleCreateView(CreateView):
+    model = Person
+    fields = (
+        "name",
+        "photo",
+        "kind",
+    )
+    template_name = "people/people_form.html"
