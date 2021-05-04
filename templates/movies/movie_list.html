@@ -2,27 +2,33 @@
 
 {% block content %}
 <div>
-  <h2>Movies</h2>
+  <h1>Movies</h1>
     <div>
     <h1><a href="{% url 'movies:movie_create'%}">Create</a></h1>
 </div>
   {% for movie in movies %}
-  <div>
-    <h3><a href="{% url "movies:movie_detail" movie.pk %}">{{movie.title}}</a></h3>
-    <h5>{{movie.year}}</h5>
+      <div class="w-full h-64 bg-cover bg-center rounded-lg " style="background-image: url({{book.cover_image}});"></div>
+      <span class="text-sm text-gray-600 block truncate">
+    <a href="{% url "movies:movie_detail" movie.pk %}">{{movie.title}}</a>
+        {{movie.year}}
+      </span>
   </div>
   {% endfor %}
 <hr />
 </div>
-<div>
-  {% if page_obj.has_previous %}
-        <a href="?page={{page_obj.previous_page_number}}">Previous</a>
-    {% endif %}
+        <div class="flex items-center justify-center mx-auto container">
+             {% if page_obj.has_previous %}
+                 <a href="?page={{page_obj.previous_page_number}}" class="text-teal-500">
+                     <i class="fas fa-arrow-left fa-lg"></i>
+                 </a>
+             {% endif %}
 
-    Page {{page_obj.number}} of {{page_obj.paginator.num_pages}}
+             <span class="mx-3 font-medium text-lg">{{page_obj.number}} of {{page_obj.paginator.num_pages}}</span>
 
-    {% if page_obj.has_next  %}
-        <a href="?page={{page_obj.next_page_number}}">Next</a>
-    {% endif %}
-</div>
+             {% if page_obj.has_next  %}
+                 <a href="?page={{page_obj.next_page_number}}" class="text-teal-500">
+                     <i class="fas fa-arrow-right fa-lg"></i>
+                 </a>
+             {% endif %}
+        </div>
 {% endblock content %}

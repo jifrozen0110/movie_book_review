@@ -2,10 +2,7 @@
 
  {% block content %}
 
-   <form method="post">
-     {% csrf_token %}
-     {{ form }}
-     <button>Save</button>
-   </form>
+
+  {% include 'mixins/form.html' with form=form cta="Save" %}
 
  {% endblock content %} 

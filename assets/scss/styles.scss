@@ -1,0 +1,12 @@
+@tailwind base;
+@tailwind components;
+.search-box {
+   transition: box-shadow 0.2s linear;
+ }
+.nav-link{
+  @apply ml-6 border-b-2 border-white items-center;
+  &:hover {
+     @apply border-gray-600;
+   }
+}
+@tailwind utilities;
