@@ -5,16 +5,16 @@
  {% endblock page_name %}
 {% block content %}
 <div>
-    <h1>{{movie.title}}</h1>
-    <h5>{{movie.year}}</h5>
-    <h3>{{movie.director.name}}</h3>
+        <div class="h-64 bg-cover bg-center rounded-lg mb-2 " style="background-image: url({{movie.cover_image.url}});"></div>
+	<div class="text-xl mb-8">{{movie.title}}<a class="bg-blue-400 hover:bg-blue-600 text-white ml-2 py-2 px-3 rounded" href="{% url 'movies:create' %}">[edit]</a></div>
+
+  <h5 class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">{{movie.year}}</h5>
+            <span class="text-lg font-bold">{{movie.director.name}}</span>
 {% for a in movie.cast.all  %}
          <li>{{a}}</li>
      {% endfor %}
-    <h3>{{movie.category.name}}</h3>
-    <h5>{{movie.rating}}</h5>
+    <h3>장르 : {{movie.category.name}}</h3>
+        <span class="text-xs mr-1"> 평균 <i class="fas fa-star text-red-500 text-xs mr-1"></i>{{movie.rating}}</span>
 </div>
-<div>
-    <h4><a href="{% url 'movies:movie_update' movie.pk %}">Edit Movie</a></h4>
-</div>
+
 {% endblock content %}

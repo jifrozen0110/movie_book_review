@@ -5,13 +5,12 @@
  {% endblock page_name %}
 {% block content %}
 <div>
-    <h1>{{book.title}}</h1>
-    <h5>{{book.year}}</h5>
-    <h3>{{book.writer.name}}</h3>
-    <h3>{{book.category.name}}</h3>
-    <h5>{{book.rating}}</h5>
-</div>
-<div>
-    <h4><a href="{% url 'books:book_update' book.pk %}">Edit Book</a></h4>
+        <div class="h-64 bg-cover bg-center rounded-lg mb-2 " style="background-image: url({{book.cover_image.url}});"></div>
+	<div class="text-xl mb-8">{{book.title}}<a class="bg-blue-400 hover:bg-blue-600 text-white ml-2 py-2 px-3 rounded" href="{% url 'books:create' %}">[edit]</a></div>
+
+  <h5 class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">{{book.year}}</h5>
+            <span class="text-lg font-bold">{{book.writer.name}}</span>
+    <h3>장르 : {{book.category.name}}</h3>
+        <span class="text-xs mr-1"> 평균 <i class="fas fa-star text-red-500 text-xs mr-1"></i>{{book.rating}}</span>
 </div>
 {% endblock content %}

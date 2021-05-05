@@ -6,14 +6,12 @@ from . import models
 class BookAdmin(admin.ModelAdmin):
   list_display=(
     "title",
-    "writer",
     "year",
     "rating",
 
   )
 
   list_fileter=(
-    "rating",
     "rating",
     "category",
   )

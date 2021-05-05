@@ -3,6 +3,7 @@ from django.core.paginator import Paginator, EmptyPage
 from movies.models import Movie
 from books.models import Book
 from people.models import Person
+from categories.models import Category
 
 
 def home(request):
@@ -21,4 +22,6 @@ def home(request):
 
 
 def search(request):
-    return render(request, "search.html")
+    return render(request, "search.html", {
+        "categories": Category.objects.all()
+    })

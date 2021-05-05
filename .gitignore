@@ -140,3 +140,4 @@ cython_debug/
 uploads/
 nodel_modules/
 node_modules
+media

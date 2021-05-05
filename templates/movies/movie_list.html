@@ -1,34 +1,35 @@
 {% extends "base.html" %}
 
+{% block page_title %}
+  Movies
+{% endblock page_title %}
+
 {% block content %}
 <div>
-  <h1>Movies</h1>
-    <div>
-    <h1><a href="{% url 'movies:movie_create'%}">Create</a></h1>
-</div>
+  <h2 class="ml-1 text-3xl text-blue-600">Movies</h2>
+  <div class="flex flex-wrap">
   {% for movie in movies %}
-      <div class="w-full h-64 bg-cover bg-center rounded-lg " style="background-image: url({{book.cover_image}});"></div>
-      <span class="text-sm text-gray-600 block truncate">
-    <a href="{% url "movies:movie_detail" movie.pk %}">{{movie.title}}</a>
-        {{movie.year}}
-      </span>
+  <div class="w-1/5 h-48 rounded shadow-lg p-2">
+    <h3 class="text-gray-900 text-base mb-2"><a href="{% url 'movies:detail' movie.pk %}">{{movie.title}}</a></h3>
+    <h5 class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">{{movie.year}}</h5>
   </div>
   {% endfor %}
+  </div>
 <hr />
 </div>
-        <div class="flex items-center justify-center mx-auto container">
-             {% if page_obj.has_previous %}
-                 <a href="?page={{page_obj.previous_page_number}}" class="text-teal-500">
-                     <i class="fas fa-arrow-left fa-lg"></i>
-                 </a>
-             {% endif %}
+<div class="mt-2 flex justify-center">
+  <div>
+  {% if page_obj.has_previous %}
+        <a class="bg-blue-400 hover:bg-blue-600 text-white font-bold py-1 px-2 rounded" href="?page={{page_obj.previous_page_number}}">Previous</a>
+    {% endif %}
 
-             <span class="mx-3 font-medium text-lg">{{page_obj.number}} of {{page_obj.paginator.num_pages}}</span>
+    <span class="font-bold text-blue-600">
+    Page {{page_obj.number}} of {{page_obj.paginator.num_pages}}
+    </span>
 
-             {% if page_obj.has_next  %}
-                 <a href="?page={{page_obj.next_page_number}}" class="text-teal-500">
-                     <i class="fas fa-arrow-right fa-lg"></i>
-                 </a>
-             {% endif %}
-        </div>
+    {% if page_obj.has_next  %}
+        <a class="bg-blue-400 hover:bg-blue-600 text-white font-bold py-1 px-2 rounded" href="?page={{page_obj.next_page_number}}">Next</a>
+    {% endif %}
+  </div>
+</div>
 {% endblock content %}

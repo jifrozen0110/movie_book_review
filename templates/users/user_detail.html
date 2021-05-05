@@ -3,10 +3,22 @@
 {{user_obj.first_name}}'s Profile
 {% endblock page_title %}
 {% block content %}
+        <div class="min-h-75vh">
+             <div class="container lg:w-5/12 md:w-1/2 xl:w-1/4 mx-auto my-10 flex flex-col items-center border p-6 border-gray-400">
 
-<h2>{{user_obj.username}}</h2>
-<h2>{{user_obj.bio}}</h2>
+                 <div class="flex items-center">
+                     <span class="text-3xl mt-1">{{user_obj.username}}</span>
+                     {% if user_obj.superhost %}
+                         <i class="fas fa-check-circle text-teal-400 ml-1"></i>
+                     {% endif %}
+                 </div>
 
-<a href="{% url 'users:update' %}">Edit Profile</a>
 
+                 <span class="text-lg mb-5">{{user.bio}}</span>
+
+                 {% if user == user_obj %}
+                     <a href="#" class="btn-link">Edit Profile</a>
+                 {% endif %}
+
+             </div>
 {% endblock content %}

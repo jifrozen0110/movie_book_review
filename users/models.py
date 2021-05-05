@@ -29,7 +29,6 @@ class User(AbstractUser):
         on_delete=models.SET_NULL,
         null=True)
 
-    def __str__(self):
-        return self.username
+
     def get_absolute_url(self):
       return reverse("users:profile",kwargs={"pk":self.pk})

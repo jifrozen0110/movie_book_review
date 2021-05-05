@@ -3,11 +3,12 @@
     People Detail
  {% endblock page_name %}
 {% block content %}
-<div>
-    <h3>{{person.name}}</h3>
-    <h3>{{person.kind}}</h3>
+    <div>
+        <div class="h-64 bg-cover bg-center rounded-lg mb-2 " style="background-image: url({{person.photo.url}});"></div>
+	<div class="text-xl mb-8">{{person.name}}<a class="bg-blue-400 hover:bg-blue-600 text-white ml-2 py-2 px-3 rounded" href="{% url 'people:create' %}">[edit]</a></div>
+
+  <h5 class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">{{person.kind}}</h5>
 </div>
-<div>
-    <h4><a href="{% url 'people:person_update' person.pk %}">Edit Person</a></h4>
-</div>
+
+
 {% endblock content %}

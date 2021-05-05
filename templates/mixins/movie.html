@@ -1,4 +1,14 @@
-<div>
-  <h3><a href="{% url 'movies:movie' movie.pk %}">{{movie.title}}</a></h3>
-  <h5>{{movie.year}}</h5>
+<div class="w-1/5">
+  <div class=" mb-10 px-2">
+    <a href="{% url 'movies:detail' movie.pk %}">
+      <div class="flex flex-col">
+        <div class="h-64 bg-cover bg-center rounded-lg mb-2 " style="background-image: url({{movie.cover_image.url}});"></div>
+        <span class="text-lg font-bold">{{movie.title}}</span>
+  <h5 class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">{{movie.year}}</h5>
+        <span class="text-xs mr-1"> 평균 <i class="fas fa-star text-red-500 text-xs mr-1"></i>{{movie.rating}}</span>
+      </div>
+
+    </a>
+  </div>
+
 </div>
