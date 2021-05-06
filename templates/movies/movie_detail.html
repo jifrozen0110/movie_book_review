@@ -1,20 +1,37 @@
 {% extends "base.html" %}
 
-{% block page_name %}
-    Movie Detail
- {% endblock page_name %}
-{% block content %}
-<div>
-        <div class="h-64 bg-cover bg-center rounded-lg mb-2 " style="background-image: url({{movie.cover_image.url}});"></div>
-	<div class="text-xl mb-8">{{movie.title}}<a class="bg-blue-400 hover:bg-blue-600 text-white ml-2 py-2 px-3 rounded" href="{% url 'movies:create' %}">[edit]</a></div>
+{% block page_title %}
+{{movie.title}}
+{% endblock page_title %}
 
-  <h5 class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">{{movie.year}}</h5>
-            <span class="text-lg font-bold">{{movie.director.name}}</span>
-{% for a in movie.cast.all  %}
-         <li>{{a}}</li>
-     {% endfor %}
-    <h3>장르 : {{movie.category.name}}</h3>
-        <span class="text-xs mr-1"> 평균 <i class="fas fa-star text-red-500 text-xs mr-1"></i>{{movie.rating}}</span>
-</div>
+{% block content %}
+  <div class="flex justify-center">
+
+    <div class="container-md mx-auto w-1/3 flex flex-col border rounded-xl shadow-xl px-8 py-6 mt-4">
+      <img src="{{movie.cover_image.url}}" class="w-3/4 rounded place-self-center	" alt="">
+      <span class="text-xl font-bold my-2">{{movie.title}}</span>
+      <span class="text-sm mr-1" >{{movie.year}} {{movie.category}}</span>
+      <span class="text-xs mr-1"> 평점 <i class="fas fa-star text-red-500 text-xs mr-1"></i>{{movie.rating}}</span>
+      <div>
+        <div>Director : {{movie.director}}</div>
+        <div>
+          <span class="font-bold">Casting</span>
+          <div class="flex flex-col">
+            {% for cast in movie.cast.all %}
+            <span class="">{{cast}}</span>
+            {% endfor %}
+          </div>
+        </div>
+
+      </div>
+
+      <div class="bg-pink-500 hover:bg-pink-700 text-white font-bold rounded w-full mt-4 py-2 px-4 flex justify-center ">
+        <a class="mx-auto " href="{% url 'movies:update' movie.pk %}">Edit Movie</a>
+      </div>
+
+    </div>
+
+
+  </div>
 
 {% endblock content %}
